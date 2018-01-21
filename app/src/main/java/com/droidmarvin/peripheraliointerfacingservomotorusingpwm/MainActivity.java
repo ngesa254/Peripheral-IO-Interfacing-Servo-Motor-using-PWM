@@ -7,6 +7,8 @@ import android.util.Log;
 import com.google.android.things.contrib.driver.pwmservo.Servo;
 import com.google.android.things.pio.PeripheralManagerService;
 
+import java.io.IOException;
+
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
@@ -21,5 +23,15 @@ public class MainActivity extends Activity {
 
         PeripheralManagerService service = new PeripheralManagerService();
 //        Log.d(TAG,"Available PWM:" +service.getPwmList());
+    }
+
+    private void setupServo(){
+try {
+    mServo = new Servo(PWM_BUS);
+    mServo.setAngleRange(0f, 180f);
+    mServo.setEnabled(true);
+}catch (IOException e){
+    Log.e(TAG,"Error creating Servo", e);
+}
     }
 }
