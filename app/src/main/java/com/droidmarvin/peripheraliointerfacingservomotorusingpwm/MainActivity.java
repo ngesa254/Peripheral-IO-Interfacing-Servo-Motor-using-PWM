@@ -8,13 +8,13 @@ import com.google.android.things.pio.PeripheralManagerService;
 
 public class MainActivity extends Activity {
 
-//    private static final String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        PeripheralManagerService service = new PeripheralManagerService();
-//        Log.d(TAG,"Available PWM:" +service.getPwmList());
+        PeripheralManagerService service = new PeripheralManagerService();
+        Log.d(TAG,"Available PWM:" +service.getPwmList());
     }
 }
