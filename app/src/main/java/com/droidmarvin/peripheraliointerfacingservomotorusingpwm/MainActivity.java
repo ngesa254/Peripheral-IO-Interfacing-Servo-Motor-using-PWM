@@ -21,8 +21,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PeripheralManagerService service = new PeripheralManagerService();
+        //PeripheralManagerService service = new PeripheralManagerService();
 //        Log.d(TAG,"Available PWM:" +service.getPwmList());
+        // call servo and move and angle of 45 degrees
+        setupServo();
+        try {
+            mServo.setAngle(45);
+        } catch (IOException e) {
+            Log.e(TAG, "Error setting the angle", e);
+        }
     }
 
     //close connection and release resources
