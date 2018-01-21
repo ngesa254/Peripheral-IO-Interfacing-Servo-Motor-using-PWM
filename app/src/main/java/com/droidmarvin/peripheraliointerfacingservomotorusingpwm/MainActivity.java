@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 //        Log.d(TAG,"Available PWM:" +service.getPwmList());
     }
 
+    //create a setupServo and configure and control settings
     private void setupServo(){
 try {
     mServo = new Servo(PWM_BUS);
@@ -33,5 +34,18 @@ try {
 }catch (IOException e){
     Log.e(TAG,"Error creating Servo", e);
 }
+    }
+    //close servo and destroy setupServo
+
+    private void destroyServo(){
+        if (mServo != null) {
+            try {
+                mServo.close();
+            } catch (IOException e) {
+                Log.e(TAG, "Error closing Servo");
+            } finally {
+                mServo = null;
+            }
+        }
     }
 }
