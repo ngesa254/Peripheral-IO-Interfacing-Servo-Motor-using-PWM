@@ -25,6 +25,13 @@ public class MainActivity extends Activity {
 //        Log.d(TAG,"Available PWM:" +service.getPwmList());
     }
 
+    //close connection and release resources
+    @Override
+    protected void onDestroy() {
+        destroyServo();
+        super.onDestroy();
+    }
+
     //create a setupServo and configure and control settings
     private void setupServo(){
 try {
@@ -35,8 +42,8 @@ try {
     Log.e(TAG,"Error creating Servo", e);
 }
     }
-    //close servo and destroy setupServo
 
+    //close servo and destroy setupServo
     private void destroyServo(){
         if (mServo != null) {
             try {
